@@ -12,7 +12,13 @@ return new class () extends Migration {
     {
         Schema::create('instructors', function (Blueprint $table) {
             $table->id();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('email');
+            $table->string('phone')->nullable();
             $table->uuid('uuid')->unique()->index();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
