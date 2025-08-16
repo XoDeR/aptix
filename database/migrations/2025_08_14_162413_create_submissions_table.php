@@ -15,6 +15,12 @@ return new class () extends Migration {
             $table->uuid('uuid')->unique()->index();
             $table->string('title')->nullable();
             $table->text('description')->nullable();
+            $table->tinyInteger('status')->nullable()->default(0);
+            $table->date('submitted_on')->nullable();
+            $table->date('rated_on')->nullable();
+            $table->foreignId('assignment_id')->nullable()->constrained('assignments')->onDelete('cascade');
+            $table->foreignId('student_id')->nullable()->constrained('students')->onDelete('cascade');
+            $table->foreignId('instructor_id')->nullable()->constrained('instructors')->onDelete('cascade');
             $table->timestamps();
         });
     }

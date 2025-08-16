@@ -15,6 +15,7 @@ return new class () extends Migration {
             $table->uuid('uuid')->unique()->index();
             $table->string('title');
             $table->text('description')->nullable();
+            $table->foreignId('chapter_id')->nullable()->constrained('chapters')->onDelete('cascade');
             $table->timestamps();
         });
     }
