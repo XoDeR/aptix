@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Course extends Model
@@ -40,5 +41,25 @@ class Course extends Model
     public function chapters(): HasMany
     {
         return $this->hasMany(Chapter::class);
+    }
+
+    /**
+     * Retrieve the students a course can belong to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany|\App\Models\Student
+     */
+    public function students(): BelongsToMany
+    {
+        return $this->belongsToMany(Student::class);
+    }
+
+    /**
+     * Retrieve the instructors a course can belong to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany|\App\Models\Instructor
+     */
+    public function instructors(): BelongsToMany
+    {
+        return $this->belongsToMany(Instructor::class);
     }
 }
