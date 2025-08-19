@@ -22,6 +22,7 @@ class Submission extends Model
         'title',
         'description',
         'status',
+        'assignment_id',
         'student_id',
         'instructor_id',
         'submitted_on',

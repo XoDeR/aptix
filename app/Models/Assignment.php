@@ -14,6 +14,17 @@ class Assignment extends Model
     use Uuid;
 
     /**
+    * The attributes that are mass assignable.
+    *
+    * @var array<string>
+    */
+    protected $fillable = [
+        'title',
+        'description',
+        'chapter_id',
+    ];
+
+    /**
      * The attributes that should be hidden for serialization.
      *
      * @var list<string>
